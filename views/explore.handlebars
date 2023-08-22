@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{pageTitle}}</title>
+    <link href="reset.css" rel="stylesheet" />
+    <link href="output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+
+
+    <section class="flex justify-start">
+
+  {{#each blogs}}
+            <p><a href="/blog/{{this.id}}">{{this.title}}</a></p>
+        {{/each}}
+
+            <script>
+      $(document).ready(function () {
+        $("form").submit(function (event) {
+          event.preventDefault();
+    
+          const searchTerm = $("input[name='homeSearch']").val();
+    
+          $.get(`/search?homeSearch=${searchTerm}`, function (data) {
+            console.log(data);
+          });
+        });
+      });
+    </script>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  </body>
+</html>
